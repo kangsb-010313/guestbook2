@@ -13,6 +13,12 @@ public class GuestbookVO {
 	//생성자
 	public GuestbookVO() {
 	}
+	public GuestbookVO(String name, String password, String content, String regDate) {
+		this.name = name;
+		this.password = password;
+		this.content = content;
+		this.regDate = regDate;
+	}
 	public GuestbookVO(int no, String name, String password, String content, String regDate) {
 		this.no = no;
 		this.name = name;

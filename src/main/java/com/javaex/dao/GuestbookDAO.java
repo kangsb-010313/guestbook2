@@ -114,7 +114,45 @@ public class GuestbookDAO {
 		return guestbookList;
 		
 	}
-	
+	// 등록하기
+	public int guestbookInsert(GuestbookVO guestbookVO) {
+		
+		System.out.println("guestbookInsert()");
+		
+		int count = -1;
+		
+		this.connect();
+		
+		
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+
+			//SQL문 준비
+			String query = "";
+				   query += " insert into guestbook ";
+				   query += " values(null, ?, ?, ?, ?) ";
+			
+			//바인딩
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, guestbookVO.getName());
+			pstmt.setString(2, guestbookVO.getPassword());
+			pstmt.setString(3, guestbookVO.getContent());
+			pstmt.setString(4, guestbookVO.getRegDate());
+			
+			
+			//실행
+
+			
+			//4.결과처리
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		
+		this.close();
+		return count;
+		
+	}
 	
 	
 

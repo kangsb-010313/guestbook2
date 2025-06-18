@@ -18,27 +18,27 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form>
+		<form action="http://localhost:8080/guestbook2/gbc" method="get">
 			<table border="1" width="540px">
 				<tr>
 					<td>이름</td>
 					<td>
-						<input type="text" name="" value="">
+						<input type="text" name="name" value="">
 					</td>
 	
 					<td>비밀번호</td>
 	                <td>
-	                	<input type="password" name="" value="">
+	                	<input type="password" name="password" value="">
 	                </td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<textarea cols="72" rows="5"></textarea>
+						<textarea name="content" cols="72" rows="5"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<button type="">등록</button>
+						<button type="submit">등록</button>
 					</td>
 				</tr>
 			</table>

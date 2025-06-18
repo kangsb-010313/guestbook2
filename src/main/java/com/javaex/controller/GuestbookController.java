@@ -54,9 +54,22 @@ public class GuestbookController extends HttpServlet {
 		}else if("wform".equals(action)){//등록폼
 			System.out.println("등록폼");
 			
+			RequestDispatcher rd = request.getRequestDispatcher("/addList.jsp");
+			rd.forward(request, response);
 			
 		}else if("write".equals(action)) {//등록(확인버튼)
 			System.out.println("등록");
+			
+			String name = request.getParameter("name");
+			String password = request.getParameter("password");
+			String content = request.getParameter("content");
+			String regDate = request.getParameter("reg_date");
+			
+			GuestbookVO guestbookVO = new GuestbookVO(name, password, content, regDate);
+			System.out.println(guestbookVO);
+			
+			GuestbookDAO guestbookDAO = new GuestbookDAO();
+			guestbookDAO.guestbookInsert(guestbookVO);
 			
 		}else if("dform".equals(action)){//삭제폼
 			System.out.println("삭제폼");
