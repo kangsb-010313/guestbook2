@@ -33,7 +33,7 @@ public class GuestbookController extends HttpServlet {
 		String action = request.getParameter("action");
 		System.out.println(action); //업무구분
 		
-		if("list".equals(action)) {//리스트
+		if("list".equals(action)) {//리스트, 등록폼
 			System.out.println("리스트");
 			
 			//db 데이터 가져오기 -> List
@@ -51,12 +51,6 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-		}else if("wform".equals(action)){//등록폼
-			System.out.println("등록폼");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/addList.jsp");
-			rd.forward(request, response);
-			
 		}else if("write".equals(action)) {//등록(확인버튼)
 			System.out.println("등록");
 			
@@ -71,11 +65,26 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDAO guestbookDAO = new GuestbookDAO();
 			guestbookDAO.guestbookInsert(guestbookVO);
 			
+			response.sendRedirect("http://localhost:8080/guestbook2/gbc?action=list");
+			
+			
 		}else if("dform".equals(action)){//삭제폼
 			System.out.println("삭제폼");
 			
+			RequestDispatcher rd = request.getRequestDispatcher("/deleteForm.jsp");
+			rd.forward(request, response);
+			
+			
 		}else if("delete".equals(action)) {//삭제
 			System.out.println("삭제");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			String password = request.getParameter("password");
+			
+			GuestbookDAO guestbookDAO = new GuestbookDAO();
+			guestbookDAO.guestbookDelete(no, password);
+			
+			response.sendRedirect("http://localhost:8080/guestbook2/gbc?action=list");
 			
 		}
 		

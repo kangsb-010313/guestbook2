@@ -33,11 +33,12 @@
 				</tr>
 				<tr>
 					<td colspan="4">
-						<textarea name="content" cols="72" rows="5"></textarea>
+						<textarea cols="72" rows="5" name="content" value=""></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
+						<input type="hidden" name="action" value="write">
 						<button type="submit">등록</button>
 					</td>
 				</tr>
@@ -55,7 +56,7 @@
 				<td><%= guestbookList.get(i).getName() %></td>
 				<td><%= guestbookList.get(i).getRegDate() %></td>
 				<td>
-					<a href="">삭제</a>
+					<a href="http://localhost:8080/guestbook2/gbc?action=dform&no=<%= guestbookList.get(i).getNo() %>">삭제</a>
 				</td>
 			</tr>
 			<tr>
