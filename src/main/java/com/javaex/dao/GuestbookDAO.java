@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.javaex.vo.GuestbookVO;
 
 public class GuestbookDAO {
 	
@@ -58,6 +62,58 @@ public class GuestbookDAO {
 			System.out.println("error:" + e);
 		}
 	}//close
+	
+	/////////////////////////////////////////////////////
+	// 리스트 가져오기
+	public List<GuestbookVO> guestbookSelect(){
+		
+		System.out.println("guestbookSelect()");
+		
+		List<GuestbookVO> guestbookList = new ArrayList<GuestbookVO>();
+		
+		this.connect();
+		
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+
+			//SQL문 준비
+			String query = "";
+				   query += " select  no, ";
+				   query += " 		  name, ";
+				   query += "		  password, ";
+				   query += "		  content, ";
+				   query += "		  reg_date ";
+				   query += " from guestbook ";
+			
+			//바인딩
+			pstmt = conn.prepareStatement(query);
+			
+			
+			//실행
+			rs = pstmt.executeQuery();
+
+			// 4.결과처리
+			while(rs.next()) {
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+				String password = rs.getString("password");
+				String content = rs.getString("content");
+				String regDate = rs.getString("reg_date");
+				
+				GuestbookVO guestbookVO = new GuestbookVO(no, name, password, content, regDate);
+				
+				guestbookList.add(guestbookVO);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		
+		this.close();
+		
+		return guestbookList;
+		
+	}
 	
 	
 	

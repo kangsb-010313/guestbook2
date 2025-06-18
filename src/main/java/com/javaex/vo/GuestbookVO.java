@@ -7,18 +7,18 @@ public class GuestbookVO {
 	private String name;
 	private String password;
 	private String content;
-	private String datetime;
+	private String regDate;
 	
 	
 	//생성자
 	public GuestbookVO() {
 	}
-	public GuestbookVO(int no, String name, String password, String content, String datetime) {
+	public GuestbookVO(int no, String name, String password, String content, String regDate) {
 		this.no = no;
 		this.name = name;
 		this.password = password;
 		this.content = content;
-		this.datetime = datetime;
+		this.regDate = regDate;
 	}
 	
 	
@@ -47,11 +47,11 @@ public class GuestbookVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getDatetime() {
-		return datetime;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setDatetime(String datetime) {
-		this.datetime = datetime;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 	
 	
@@ -59,7 +59,7 @@ public class GuestbookVO {
 	@Override
 	public String toString() {
 		return "GuestbookVO [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content
-				+ ", datetime=" + datetime + "]";
+				+ ", regDate=" + regDate + "]";
 	}
 	
 
