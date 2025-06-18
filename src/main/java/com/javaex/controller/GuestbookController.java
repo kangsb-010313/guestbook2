@@ -7,34 +7,56 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class GuestbookController
- */
-@WebServlet("/GuestbookController")
+@WebServlet("/gbc")
 public class GuestbookController extends HttpServlet {
+	
+	//필드
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GuestbookController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	//생성자 --> 생략
+	
+	//메소드 gs
+	
+	//메소드 일반
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		
+		System.out.println("GuestbookController");
+		
+		//action
+		String action = request.getParameter("action");
+		System.out.println(action); //업무구분
+		
+		if("list".equals(action)) {//리스트
+			System.out.println("리스트");
+			
+			//GuestbookDAO guestbookDAO = new GuestbookDAO();
+			//List<GuestbookVO> guestbookList = guestbookDAO.guestbookSelect();
+			
+		}else if("wform".equals(action)){//등록폼
+			System.out.println("등록폼");
+			
+		}else if("write".equals(action)) {//등록(확인버튼)
+			System.out.println("등록");
+			
+		}else if("dform".equals(action)){//삭제폼
+			System.out.println("삭제폼");
+			
+		}else if("delete".equals(action)) {//삭제
+			System.out.println("삭제");
+			
+		}
+		
+		
+		
+		
+		
+		
+	
+	}//doGet
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
