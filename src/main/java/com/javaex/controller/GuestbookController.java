@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.GuestbookDAO;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.GuestbookVO;
 
 @WebServlet("/gbc")
@@ -47,8 +48,7 @@ public class GuestbookController extends HttpServlet {
 			request.setAttribute("gList", guestbookList);
 			
 			//forward
-			RequestDispatcher rd = request.getRequestDispatcher("/addList.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/addList.jsp");
 			
 			
 		}else if("write".equals(action)) {//등록(확인버튼)
@@ -65,15 +65,12 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDAO guestbookDAO = new GuestbookDAO();
 			guestbookDAO.guestbookInsert(guestbookVO);
 			
-			response.sendRedirect("http://localhost:8080/guestbook2/gbc?action=list");
-			
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=list");
 			
 		}else if("dform".equals(action)){//삭제폼
 			System.out.println("삭제폼");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/deleteForm.jsp");
-			rd.forward(request, response);
-			
+			WebUtil.forward(request, response, "/WEB-INF/deleteForm.jsp");
 			
 		}else if("delete".equals(action)) {//삭제
 			System.out.println("삭제");
@@ -84,7 +81,7 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDAO guestbookDAO = new GuestbookDAO();
 			guestbookDAO.guestbookDelete(no, password);
 			
-			response.sendRedirect("http://localhost:8080/guestbook2/gbc?action=list");
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=list");
 			
 		}
 		
