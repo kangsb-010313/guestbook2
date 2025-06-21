@@ -18,7 +18,7 @@
 					<td>
 						<input type="hidden" name="action" value="delete">
 						<input type="hidden" name="no" value="<%= request.getParameter("no") %>">
-						<button type="submit">삭제</a></button>
+						<button type="submit">삭제</button>
 					</td>
 				</tr>
 			</table>
